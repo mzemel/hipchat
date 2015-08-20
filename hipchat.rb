@@ -53,5 +53,5 @@ class Story
   end
 end
 
-story = Story.new("twilight.txt", "1144776")
+story = Story.new("twilight.txt", "1538770")
 story.read!
