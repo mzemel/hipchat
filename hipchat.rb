@@ -1,8 +1,6 @@
 require 'net/http'
 require 'uri'
 require 'openssl'
-require 'json'
-require 'pry'
 
 class HipchatMessenger
 
@@ -42,11 +40,10 @@ class PeterPoker
     @filename = filename
   end
 
-  def annoy!
+  def read_me_a_story!
     lines.each do |line|
-      puts "Sending: #{line[0..10]}"
       HipchatMessenger.new(line)
-      sleep 10
+      sleep rand(10..60)
     end
   end
 
@@ -55,4 +52,5 @@ class PeterPoker
   end
 end
 
-PeterPoker.new("twilight.txt").annoy!
+poker = PeterPoker.new("twilight.txt")
+poker.read_me_a_story!
