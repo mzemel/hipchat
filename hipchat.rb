@@ -8,10 +8,10 @@ class HipchatMessenger
 
   attr_accessor :message, :user
 
-  def initialize(message = "Hey!", user = "1144776")
+  def initialize(message, user)
     @message = message
     @user    = user
-    puts send_message.body
+    send_message
   end
 
   private
@@ -32,17 +32,18 @@ class HipchatMessenger
   end
 end
 
-class PeterPoker
+class Story
 
-  attr_accessor :filename
+  attr_accessor :filename, :user
 
-  def initialize(filename)
+  def initialize(filename, user)
     @filename = filename
+    @user     = user
   end
 
-  def read_me_a_story!
+  def read!
     lines.each do |line|
-      HipchatMessenger.new(line)
+      HipchatMessenger.new(line, user)
       sleep rand(10..60)
     end
   end
@@ -52,5 +53,5 @@ class PeterPoker
   end
 end
 
-poker = PeterPoker.new("twilight.txt")
-poker.read_me_a_story!
+story = Story.new("twilight.txt", "1144776")
+story.read!
